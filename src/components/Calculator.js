@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Buttons from './Buttons';
+import calculate from '../logic/calculate';
 
 function Calculator() {
+  const [calOperation, setCalOperation] = useState({
+    total: 0,
+    next: null,
+    operation: null,
+  });
+
+  const handleEvent = (e) => {
+    const updateState = calculate(calOperation, e.target.value);
+    setCalOperation(updateState);
+  };
+
   const Data = [
     {
       id: 1,
@@ -56,7 +68,7 @@ function Calculator() {
       title: '0',
     },
     {
-      id: 13,
+      id: 19,
       title: '.',
     },
   ];
@@ -67,11 +79,11 @@ function Calculator() {
     },
     {
       id: 15,
-      title: '×',
+      title: 'x',
     },
     {
       id: 16,
-      title: '−',
+      title: '-',
     },
     {
       id: 17,
@@ -83,16 +95,42 @@ function Calculator() {
     },
   ];
   return (
-    <main className="calculator">
-      <section className="digits">
-        {Data.map(({ id, title }) => (
-          <Buttons className="btns" key={id} title={title} />
-        ))}
+    <main>
+      <section className="screen">
+        {!calOperation ? (
+          <span> 0 </span>
+        ) : (
+          <span>
+            {calOperation.total}
+            {' '}
+            {calOperation.operation}
+            {' '}
+            {calOperation.next}
+          </span>
+        )}
       </section>
-      <section className="operators">
-        {Operators.map(({ id, title }) => (
-          <Buttons className="operatorBtns" key={id} title={title} />
-        ))}
+
+      <section className="calculator">
+        <article className="digits">
+          {Data.map(({ id, title }) => (
+            <Buttons
+              handleEvent={handleEvent}
+              className="btns"
+              key={id}
+              title={title}
+            />
+          ))}
+        </article>
+        <article className="operators">
+          {Operators.map(({ id, title }) => (
+            <Buttons
+              handleEvent={handleEvent}
+              className="operatorBtns"
+              key={id}
+              title={title}
+            />
+          ))}
+        </article>
       </section>
     </main>
   );
