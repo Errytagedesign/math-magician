@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Buttons({ title, className }) {
+function Buttons({ title, className, handleEvent }) {
   return (
-    <button type="button" className={className}>
+    <button
+      type="button"
+      value={title}
+      onClick={handleEvent}
+      className={className}
+    >
       {title}
     </button>
   );
@@ -11,7 +16,7 @@ function Buttons({ title, className }) {
 
 Buttons.propTypes = {
   title: PropTypes.string.isRequired,
-  //   onClick: PropTypes.func.isRequired,
+  handleEvent: PropTypes.func.isRequired,
   className: PropTypes.string,
 };
 
