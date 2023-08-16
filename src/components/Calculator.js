@@ -95,42 +95,46 @@ function Calculator() {
     },
   ];
   return (
-    <main>
-      <section className="screen">
-        {!calOperation ? (
-          <span> 0 </span>
-        ) : (
-          <span>
-            {calOperation.total}
-            {' '}
-            {calOperation.operation}
-            {' '}
-            {calOperation.next}
-          </span>
-        )}
-      </section>
+    <main className="math_wrapper">
+      <h2> Let&apos;s do some Math!</h2>
 
-      <section className="calculator">
-        <article className="digits">
-          {Data.map(({ id, title }) => (
-            <Buttons
-              handleEvent={handleEvent}
-              className="btns"
-              key={id}
-              title={title}
-            />
-          ))}
-        </article>
-        <article className="operators">
-          {Operators.map(({ id, title }) => (
-            <Buttons
-              handleEvent={handleEvent}
-              className="operatorBtns"
-              key={id}
-              title={title}
-            />
-          ))}
-        </article>
+      <section className="maths">
+        <section className="screen">
+          {!calOperation ? (
+            <span> 0 </span>
+          ) : (
+            <span>
+              {calOperation.total}
+              {' '}
+              {calOperation.operation}
+              {' '}
+              {calOperation.next}
+            </span>
+          )}
+        </section>
+
+        <section className="calculator">
+          <article className="digits">
+            {Data.map(({ id, title }) => (
+              <Buttons
+                handleEvent={handleEvent}
+                className="btns"
+                key={id}
+                title={title}
+              />
+            ))}
+          </article>
+          <article className="operators">
+            {Operators.map(({ id, title }) => (
+              <Buttons
+                handleEvent={handleEvent}
+                className="operatorBtns"
+                key={id}
+                title={title}
+              />
+            ))}
+          </article>
+        </section>
       </section>
     </main>
   );

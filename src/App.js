@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Calculator from './components/Calculator';
 import Qoutes from './components/Qoutes';
+import NavBar from './components/NavBar';
+import Home from './components/Home';
 
 function App() {
   const [data, setData] = useState([]);
@@ -36,8 +39,19 @@ function App() {
 
   return (
     <div className="App">
-      <Calculator />
-      <Qoutes data={data} loading={isLoading} error={hasError} />
+      <Router>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/calculator" element={<Calculator />} />
+          <Route
+            path="/quote"
+            element={
+              <Qoutes data={data} loading={isLoading} error={hasError} />
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
