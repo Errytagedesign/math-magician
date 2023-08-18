@@ -2,13 +2,23 @@
   box-sizing: border-box;
 }
 
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 100%;
-  margin: 5em auto;
-  padding: 1em;
+  margin: 0 auto;
 }
 
 button {
@@ -65,11 +75,66 @@ button {
   border: solid 1px #d1d1d1;
   padding: 1em 1.3em;
   border-radius: 20px;
-  margin-top: 1em;
+  width: 90%;
+  margin: 2em auto;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: wheat;
+  padding: 1em 0.4em;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.home {
+  text-align: start;
+  width: 80%;
+}
+
+.math_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2em auto;
+}
+
+.maths {
+  width: 100%;
+  margin: 2em auto;
 }
 
 @media screen and (min-width: 500px) {
-  .App {
+  nav {
+    padding: 1em 4em;
+  }
+
+  .navbar {
+    width: 20%;
+  }
+
+  .home {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .maths {
     width: 40%;
+  }
+
+  .quote {
+    width: 80%;
+  }
+
+  .math_wrapper h2 {
+    width: 50%;
+    text-align: start;
   }
 }
